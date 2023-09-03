@@ -1,8 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
-import logoS from "../../assets/logo-secondary.svg";
 import logoP from "../../assets/logo-white.svg";
-
+import {Link} from 'react-router-dom'
 import { BsCheck2Circle,BsInstagram} from 'react-icons/bs';
 import {FaPhone} from 'react-icons/fa';
 import {MdEmail,MdLocationPin} from 'react-icons/md';
@@ -15,6 +14,7 @@ import "./style.css";
 import FadeIn from "react-fade-in";
 
 const LandingPage=()=>{
+    const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [code,setCode]=useState('');
     const [showLogo,setShowLogo]=useState(true);
@@ -29,18 +29,21 @@ const LandingPage=()=>{
     const closeMenu = () => {
     setIsMenuOpen(false);
     };
-    const generateRandomCode=()=>{
-        const alphanumericChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        const length = 10;
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * alphanumericChars.length);
-            result += alphanumericChars.charAt(randomIndex);
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+        }, []);
+    
+    const handleScroll = () => {
+        if (window.scrollY > 0) {
+            setScrolling(true);
+        } else {
+            setScrolling(false);
         }
-        setCode(result);
-        console.log(result);
-        
-    }
+    };
+    const navbarClass = scrolling ? 'with-shadow' : 'navbar';
     return(
         <>
             <div className="main">
@@ -50,15 +53,17 @@ const LandingPage=()=>{
                 </div>
                 :
                 <div className='hero'>
-                    <div className="header">
+                    <div className={`header ${navbarClass}`}>
                         <img src={logoP} alt="logo" className="logoP"/>
                         <div className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                             <FaBars  className="menu"/>
                         </div>
                         <div  className={`link nav-links ${isMenuOpen ? 'open' : ''}`}>
                             <a href="#about-us" className="about" onClick={closeMenu}>About Us</a>
-                            <a href="#"className="start" onClick={closeMenu}>Get Started</a>
+                            <Link to="/startup" className="start" onClick={closeMenu}>Get Started</Link>
                             <a href="#contact-us"className="contact" onClick={closeMenu}>Contact Us</a>
+                            <Link to="/login" className="login-option" onClick={closeMenu}>Login</Link>
+
                         </div>
                     </div>
                     <div className="hero-content">
@@ -69,7 +74,7 @@ const LandingPage=()=>{
                                 <h2>to Manage</h2>
                                 <h2>Your Community</h2>
                                 <div>
-                                    <button className="btnStart">START NOW</button>
+                                    <button className="btnStart"><Link to="/startup">START NOW</Link></button>
                                 </div>
                             </div>
                         </div>
@@ -77,9 +82,9 @@ const LandingPage=()=>{
                             <img src={illustration} alt="illustration"  className="home-img"/>
                         </div>
                     </div>
-                    <div className="detail-content">
+                    <div className="detail-content"  id="about-us">
                         <div className="about-details">
-                            <div className="about-text" id="about-us">
+                            <div className="about-text" >
                                 <h2>About Us</h2>
                                 <div className="after"></div>
                                 <p>Voluntea is a management software that helps organizations 
@@ -105,9 +110,9 @@ const LandingPage=()=>{
                             </div>
                         </div>
                     </div>
-                    <div className="contact-content">
+                    <div className="contact-content" id="contact-us">
                         <div className="contact-details">
-                            <div className="contact-form" id="contact-us">
+                            <div className="contact-form">
                                 <h2>Get in Touch</h2>
                                 <div className="after"></div>
                                 <p>Please fill out the form below to send us an email 
@@ -170,11 +175,6 @@ const LandingPage=()=>{
                     </div>
                     
                 }
-                
-                
-                {/* <h1>LANDING PAGE OF VOLUNTEA</h1>
-                <button onClick={generateRandomCode}>Generate a code for your organization</button>
-                <p>Organization's Code:{code}</p> */}
             </div>
         </>
     );

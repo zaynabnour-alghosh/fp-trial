@@ -4,7 +4,6 @@
     font-family:'Roboto',sans-serif;
 }
 .main{
-    height:100vh;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -14,6 +13,10 @@
     display: flex;
     flex-direction: column;
 }
+.with-shadow {
+    box-shadow: 0 5px 4px rgba(28, 41, 59, 0.1);
+    transition: box-shadow 0.3s;
+}
 .header{
     width: 100%;
     display: flex;
@@ -21,6 +24,10 @@
     background-color:#9EA4DA;
     height:fit-content;
     justify-content:space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 
 }
 .logoP{
@@ -108,7 +115,7 @@ a:hover{
     flex-direction: row;
     gap:10px;
     justify-content:space-between;
-    padding-top: 20px;
+    padding-top: 80px;
 }
 
 .about-us{
@@ -157,15 +164,19 @@ a:hover{
     gap: 1rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: var(--color-background);
-    color: var(--color-text-primary);
-    font-size: 1.3rem;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-}
-.btnStart:hover{
     background-color: var(--color-primary-dark);
-    color: var(--color-white);
+    color:white;
+    width: 150px;
+    font-size: 18px;
+    height: 30px;
+}
+.btnStart a{
+    padding: 5px 0px;
+}
+.btnStart a:hover{
+    text-decoration: none;
+    font-weight: 600;
+       
 }
 .detail-content{
     width: 100%;
@@ -181,12 +192,6 @@ a:hover{
     flex-direction: column;
     gap:20px;
 }
-
-
-
-
-
-
 .about-text {
     padding: 35px;
     display: flex;
@@ -294,6 +299,7 @@ a:hover{
     flex-wrap: wrap;
     gap:8px;
     width: 100%;
+    justify-content: space-between;
 }
 .contact-input input, textarea{
     border-radius: 0.5rem;
@@ -308,6 +314,7 @@ a:hover{
     color:rgb(45, 51, 58);
     outline-color:rgb(45, 51, 58);
     outline-style: none;
+    width: 100%;
 
 }
 .contact-input input,textarea:focus{
@@ -352,6 +359,9 @@ a:hover{
 }
 
 @media (max-width: 850px) {
+    .contact-form{
+        width: 100%;
+    }
     .contact-content {
       flex-direction: column; 
       align-items: center;
@@ -361,12 +371,19 @@ a:hover{
       width: 100%; 
       max-width: none;
       padding-top: 0px;
+      padding: 15px;
     }
     .info-details{
-        padding: 0px 50px;
+        padding: 10px 50px;
         gap:50px;
         display: flex;
         flex-direction: row;
+    }
+    .contact-right h2{
+        padding-left: 35px;
+    }
+    .hero-content{
+        align-items: center;
     }
 }
 
@@ -386,7 +403,6 @@ a:hover{
     gap:10px;
     align-items: baseline;
 }
-
 
 
 
