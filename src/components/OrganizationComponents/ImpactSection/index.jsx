@@ -1,10 +1,20 @@
 import React from "react";
 import './style.css';
+import ImpactCard from "../ImpactCard";
 
 const ImpactSection=()=>{
     return(
-        <div className="page">
-            <h1>Impact Section</h1>
+        <div className="page impact-page flex column">
+            <div className="impacts-header flex center">
+                <h1>What we do</h1>
+            </div>
+            <div className="impacts flex">
+                <div className="impacts-container flex center">
+                    <ImpactCard/>
+                    <ImpactCard/>
+                    <ImpactCard/>
+                </div>
+            </div>
         </div>
     );
 }
