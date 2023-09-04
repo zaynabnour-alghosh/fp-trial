@@ -10,7 +10,9 @@ import ImpactSection from '../../components/OrganizationComponents/ImpactSection
 import MissionSection from '../../components/OrganizationComponents/MissionSection';
 import EventSection from '../../components/OrganizationComponents/EventSection';
 import {FaPhone} from 'react-icons/fa';
-import {MdEmail,MdLocationPin} from 'react-icons/md';
+import {MdEmail,MdLocationPin,MdKeyboardDoubleArrowRight} from 'react-icons/md';
+import {FaFacebookSquare} from 'react-icons/fa';
+import {BsInstagram,BsWhatsapp} from 'react-icons/bs';
 const OrganizationLanding=()=>{
     const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +66,7 @@ const OrganizationLanding=()=>{
                 <EventSection/>
             </div>
             <div id="contact">
-               <div className="footer-container">
+               <div className="footer-container flex column">
                     <div className="footer-content flex">
                         <div className="org-info flex column">
                             <h3>CEI</h3>
@@ -77,9 +79,9 @@ const OrganizationLanding=()=>{
                         <div className="footer-about flex column">
                             <h3>About Us</h3>
                             <div className="footer-links flex column">
-                            <a href="#about-us">Who We Are</a>
-                            <a href="#impact">What We Do</a>
-                            <a href="#mission">How We Do it</a>
+                            <a href="#about-us"><MdKeyboardDoubleArrowRight/> &nbsp; Who We Are</a>
+                            <a href="#impact"><MdKeyboardDoubleArrowRight/> &nbsp;What We Do</a>
+                            <a href="#mission"><MdKeyboardDoubleArrowRight/> &nbsp;How We Do it</a>
                             </div>
                         </div>
                         <div className="footer-contact flex column">
@@ -105,6 +107,14 @@ const OrganizationLanding=()=>{
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className=" flex org-social">
+                        <FaFacebookSquare size={28}/>
+                        <BsInstagram  size={28}/>
+                        <BsWhatsapp  size={28}/>
+                    </div>
+                    <div className=' flex center'>
+                        <h2>COPYRIGHT 2023 &copy;</h2>
                     </div>
                </div>
             </div>
